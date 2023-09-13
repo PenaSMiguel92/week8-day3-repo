@@ -22,13 +22,15 @@ public class PhoneBook {
     }
 
     public Optional<String> findPhoneNumberByName(String name) {
-        List<String> names = phoneBookEntries.keySet().stream().toList();
-        return names.stream().filter(p -> p.equals(name)).findFirst();
+        //List<String> names = phoneBookEntries.keySet().stream().toList();
+        //Optional<String> nameOptional = names.stream().filter(p -> p.equals(name)).findFirst();
+        return phoneBookEntries.values().stream().filter(k -> k.equals(phoneBookEntries.get(name))).findFirst(); //Optional.of(phoneBookEntries.get(nameOptional.get()));
     }
 
     public Optional<String> findNameByPhoneNumber(String phoneNumber) {
-        List<String> phoneNumbers = phoneBookEntries.values().stream().toList();
-        return phoneNumbers.stream().filter(p -> p.equals(phoneNumber)).findFirst();
+        //List<String> phoneNumbers = phoneBookEntries.values().stream().toList();
+        //Optional<String> phoneNumberOptional = phoneNumbers.stream().filter(p -> p.equals(phoneNumber)).findFirst();
+        return phoneBookEntries.keySet().stream().filter(k -> phoneBookEntries.get(k).equals(phoneNumber)).findFirst();
     }
 
     @Override
